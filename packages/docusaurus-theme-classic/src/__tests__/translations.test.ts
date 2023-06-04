@@ -141,4 +141,20 @@ describe('getTranslationFiles and translateThemeConfig isomorphism', () => {
   it('is verified for sample without footer', () => {
     verifyIsomorphism({...ThemeConfigSample, footer: undefined});
   });
+
+  it('returns an empty translated themeConfig when translation files are missing', () => {
+    const missingTranslationThemeConfig: ThemeConfig = {
+      ...ThemeConfigSample,
+      navbar: {
+        title: 'navbar title (translated)',
+      },
+    };
+
+    const translatedThemeConfig = translateThemeConfig({
+      themeConfig: missingTranslationThemeConfig,
+      translationFiles: [], // Empty translation files
+    });
+
+    expect(translatedThemeConfig).toEqual(missingTranslationThemeConfig);
+  });
 });
