@@ -19,6 +19,11 @@ describe('formatters', () => {
       `"<cyan><underline>https://docusaurus.io/keepAnsi</underline></color>"`,
     );
   });
+  it('url with no protocol', () => {
+    expect(logger.url('docusaurus.io/keepAnsi')).toMatchInlineSnapshot(
+      `"<cyan><underline>docusaurus.io/keepAnsi</underline></color>"`,
+    );
+  });
   it('id', () => {
     expect(logger.name('keepAnsi')).toMatchInlineSnapshot(
       `"<blue><bold>keepAnsi</intensity></color>"`,
